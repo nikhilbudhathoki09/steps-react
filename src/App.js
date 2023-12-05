@@ -59,6 +59,42 @@
 
 import { useState } from "react";
 
+// export default function App() {
+//   const [count, setCount] = useState(0);
+//   const [step, setStep] = useState(1);
+
+//   const date = new Date();
+//   date.setDate(date.getDate() + count);
+
+//   return (
+//     <div style={{ position: "relative", left: "50%" }}>
+//       <div style={{ display: "flex" }}>
+//         <button onClick={() => setStep((s) => s + 1)}>+</button>
+//         <span>Step :{step}</span>
+//         <button onClick={() => setStep((s) => (s > 1 ? s - 1 : 1))}>-</button>
+//       </div>
+//       <div style={{ display: "flex" }}>
+//         <button onClick={() => setCount((count) => count + step)}>+</button>
+//         <p>Count :{count}</p>
+//         <button onClick={() => setCount((count) => count - step)}>-</button>
+//       </div>
+//       <div>
+//         <p>
+//           {Math.abs(count)}
+//           <span>
+//             {count === 0
+//               ? "Today is "
+//               : count > 0
+//               ? " day from now is "
+//               : " day ago was "}
+//           </span>
+//           <span>{date.toDateString()}</span>
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
+
 export default function App() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
@@ -69,13 +105,26 @@ export default function App() {
   return (
     <div style={{ position: "relative", left: "50%" }}>
       <div style={{ display: "flex" }}>
-        <button onClick={() => setStep((s) => s + 1)}>+</button>
+        {/* <button onClick={() => setStep((s) => s + 1)}>+</button>
         <span>Step :{step}</span>
-        <button onClick={() => setStep((s) => (s > 1 ? s - 1 : 1))}>-</button>
+        <button onClick={() => setStep((s) => (s > 1 ? s - 1 : 1))}>-</button> */}
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        Step : {step}
       </div>
       <div style={{ display: "flex" }}>
         <button onClick={() => setCount((count) => count + step)}>+</button>
-        <p>Count :{count}</p>
+
+        <input
+          type="number"
+          value={count}
+          onChange={(e) => setCount(e.target.value)}
+        ></input>
         <button onClick={() => setCount((count) => count - step)}>-</button>
       </div>
       <div>
