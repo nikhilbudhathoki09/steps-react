@@ -99,6 +99,11 @@ export default function App() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
 
+  function handleReset() {
+    setCount(0);
+    setStep(1);
+  }
+
   const date = new Date();
   date.setDate(date.getDate() + count);
 
@@ -129,16 +134,18 @@ export default function App() {
       </div>
       <div>
         <p>
-          {Math.abs(count)}
           <span>
             {count === 0
               ? "Today is "
               : count > 0
-              ? " day from now is "
-              : " day ago was "}
+              ? `${count} day from now is `
+              : `${Math.abs(count)} day ago was `}
           </span>
           <span>{date.toDateString()}</span>
         </p>
+      </div>
+      <div>
+        <button onClick={handleReset}>Reset</button>
       </div>
     </div>
   );
